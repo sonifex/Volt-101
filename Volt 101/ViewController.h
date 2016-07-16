@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import "FlickrManager.h"
+
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end
 

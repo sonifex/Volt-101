@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>JSONModel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Volt 101.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -31,6 +36,37 @@
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict/>
+	<dict>
+		<key>09FA060F1A0492FB25232F489AC4E573</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>373EAA51049355BE5FE80C53B351E65C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5FCD51A68750813C68A2A9ADE151C98D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>729442947855C59753B1AF0983650B1B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7DFF276886BFC72A7ABF362ECFBE9BC9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>928353533005A4198EBDA5B700D37B64</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
 </dict>
 </plist>

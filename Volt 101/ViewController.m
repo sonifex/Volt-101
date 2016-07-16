@@ -16,7 +16,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    
+    [[FlickrManager sharedManager] getRecentPhotosByPage:1 count:10 completion:^(FKPhotos *photos, NSError *error) {
+        
+        NSLog(@"photos: %@",photos);
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
