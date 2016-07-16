@@ -17,4 +17,7 @@
 @property(nonatomic,strong) NSString *farm;
 @property(nonatomic,strong) NSString *title;
 
+
+- (NSString*)photoURLString;
+
 @end
