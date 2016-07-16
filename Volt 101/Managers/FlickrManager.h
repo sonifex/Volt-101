@@ -19,9 +19,9 @@ typedef void (^FMRequestCompletion)(FKPhotos *photos, NSError *error);
 + (FlickrManager*) sharedManager;
 
 /*!
- * @discussion Responding photos
- * @param <#param description#>
- * @return <#return description#>
+ * @discussion  Recent Public Photos on Flickr
+ * @param page Number of current page
+ * @param count Number of photos fetching
  */
 - (void)getRecentPhotosByPage:(NSInteger)page count:(NSInteger)numberOfPhoto completion:(FMRequestCompletion)completion;
 

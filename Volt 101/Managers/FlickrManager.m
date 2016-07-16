@@ -23,6 +23,7 @@
     return manager;
 }
 
+#pragma mark - Recent Public Photos
 
 - (void)getRecentPhotosByPage:(NSInteger)page count:(NSInteger)numberOfPhoto completion:(FMRequestCompletion)completion {
     
@@ -42,4 +43,7 @@
     
     
 }
+
+
+
 @end
