@@ -8,24 +8,24 @@
 
 #import "FKPhoto.h"
 
-#import "FKUtilities.h"
+#import "JSONValueTransformer+DateTransformer.h"
 
 
 @implementation FKPhoto
 
 
-- (NSString*)photoURLString {
-    
-    //https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
-    return [NSString stringWithFormat:@"https://farm%@.staticflickr.com/%@/%@_%@_l.jpg",self.farm,self.server,self.Id,self.secret];
-    
-}
 
 +(JSONKeyMapper*)keyMapper
 {
     return [[JSONKeyMapper alloc] initWithDictionary:@{
-                                                       @"id": @"Id"
+                                                       @"id": @"Id",
+                                                       @"dateupload" : @"dateUpload",
+                                                       @"url_l" : @"photoURL"
                                                        }];
 }
+
+
+
+
 
 @end

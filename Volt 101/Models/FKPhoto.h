@@ -16,8 +16,11 @@
 @property(nonatomic,strong) NSString *server;
 @property(nonatomic,strong) NSString *farm;
 @property(nonatomic,strong) NSString *title;
+@property(nonatomic,strong) NSString *ownername;
+@property(nonatomic,strong) NSDate *dateUpload;
+@property(nonatomic,strong) NSURL *photoURL;
 
 
-- (NSString*)photoURLString;
+
 
 @end

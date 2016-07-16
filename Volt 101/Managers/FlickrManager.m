@@ -29,7 +29,8 @@
     
     NSDictionary *args = @{
                            @"per_page" : [NSString stringWithFormat:@"%i",(int)numberOfPhoto],
-                           @"page" : [NSString stringWithFormat:@"%i",(int)page]
+                           @"page" : [NSString stringWithFormat:@"%i",(int)page],
+                           @"extras" : @"date_upload,owner_name,views,url_l"
                            };
     
     [[FlickrKit sharedFlickrKit] call:@"flickr.photos.getRecent" args:args maxCacheAge:FKDUMaxAgeNeverCache completion:^(NSDictionary *response, NSError *error) {
