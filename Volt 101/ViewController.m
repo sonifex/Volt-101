@@ -8,7 +8,13 @@
 
 #import "ViewController.h"
 
+#import "PhotoCell.h"
+
 @interface ViewController ()
+
+@property (nonatomic,strong) FKPhotos *photos;
+
+@property (nonatomic,strong) UISearchController *searchController;
 
 @end
 
@@ -17,17 +23,48 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setTitle:@"Flickr"];
+    
+    [self.tableView registerClass:[PhotoCell class] forCellReuseIdentifier:@"PhotoCell"];
+    self.tableView.estimatedRowHeight = 300;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
     
     [[FlickrManager sharedManager] getRecentPhotosByPage:1 count:10 completion:^(FKPhotos *photos, NSError *error) {
         
-        NSLog(@"photos: %@",photos);
+        NSLog(@"Download successed!");
+        self.photos = photos;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [self.tableView reloadData];
+            
+        });
         
     }];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+
+#pragma mark - Table View Data Source
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.photos.photo ? 10 : 0;
 }
+
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *cellIdentifier = @"PhotoCell";
+    
+    
+    PhotoCell *cell = (PhotoCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    FKPhoto *photo = [self.photos.photo objectAtIndex:indexPath.row];
+    
+    [cell setWithPhoto:photo];
+    
+    return cell;
+}
+
 
 @end

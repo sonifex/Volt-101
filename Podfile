@@ -10,7 +10,7 @@ target 'Volt 101' do
     pod 'SDWebImage'
     pod 'PureLayout'
     pod 'JSONModel'
-    
+    pod 'NSDate+TimeAgo'
     
     
 end

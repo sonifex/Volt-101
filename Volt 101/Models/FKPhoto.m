@@ -26,6 +26,8 @@
 
 
 
-
+- (NSURL*)ownerAvatarURL {
+    return [NSURL URLWithString:[NSString stringWithFormat:@"https://flickr.com/buddyicons/%@.jpg",self.owner]];
+}
 
 @end

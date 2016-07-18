@@ -33,7 +33,7 @@
                            @"extras" : @"date_upload,owner_name,views,url_l"
                            };
     
-    [[FlickrKit sharedFlickrKit] call:@"flickr.photos.getRecent" args:args maxCacheAge:FKDUMaxAgeNeverCache completion:^(NSDictionary *response, NSError *error) {
+    [[FlickrKit sharedFlickrKit] call:@"flickr.photos.getRecent" args:args maxCacheAge:FKDUMaxAgeFiveMinutes completion:^(NSDictionary *response, NSError *error) {
         
         FKPhotos *photos = [[FKPhotos alloc] initWithDictionary:[response objectForKey:@"photos"] error:nil];
         

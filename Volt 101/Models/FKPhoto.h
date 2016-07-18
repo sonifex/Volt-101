@@ -18,9 +18,10 @@
 @property(nonatomic,strong) NSString *title;
 @property(nonatomic,strong) NSString *ownername;
 @property(nonatomic,strong) NSDate *dateUpload;
-@property(nonatomic,strong) NSURL *photoURL;
+@property(nonatomic,strong) NSURL <Optional>*photoURL;
 
 
 
+- (NSURL*)ownerAvatarURL;
 
 @end

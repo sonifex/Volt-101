@@ -16,6 +16,7 @@ PODS:
     - AFNetworking/NSURLSession
   - FlickrKit (1.0.8)
   - JSONModel (1.2.0)
+  - NSDate+TimeAgo (1.0.6)
   - PureLayout (3.0.2)
   - SDWebImage (3.8.1):
     - SDWebImage/Core (= 3.8.1)
@@ -25,6 +26,7 @@ DEPENDENCIES:
   - AFNetworking
   - FlickrKit
   - JSONModel
+  - NSDate+TimeAgo
   - PureLayout
   - SDWebImage
 
@@ -32,9 +34,10 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   FlickrKit: beadf880a10ccaa2f13666d04112324fe08815e2
   JSONModel: 12523685c4b623553ccf844bbbf7007624317b2c
+  NSDate+TimeAgo: 35601c619b2d59290055e4fe76e61d97677a2360
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
 
-PODFILE CHECKSUM: 4681f56f341fdad5c1c1c3e637d16627787b98df
+PODFILE CHECKSUM: 76498accccabe53d2e7920017d20eef85757ef45
 
 COCOAPODS: 1.0.1
