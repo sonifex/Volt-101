@@ -25,10 +25,37 @@
     
     [self setTitle:@"Flickr"];
     
+    [self configureTableView];
+    [self configureSearchController];
+    
+    
+    
+    [self getRecentPhotos];
+}
+
+#pragma mark - Configuration
+
+- (void)configureSearchController {
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    self.searchController.searchResultsUpdater = self;
+    self.searchController.dimsBackgroundDuringPresentation = NO;
+    self.definesPresentationContext = YES;
+    self.tableView.tableHeaderView = self.searchController.searchBar;
+    
+}
+
+- (void)configureTableView {
+    
     [self.tableView registerClass:[PhotoCell class] forCellReuseIdentifier:@"PhotoCell"];
     self.tableView.estimatedRowHeight = 300;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
+}
+
+
+#pragma mark - SERVICES
+
+- (void)getRecentPhotos {
     
     [[FlickrManager sharedManager] getRecentPhotosByPage:1 count:10 completion:^(FKPhotos *photos, NSError *error) {
         
@@ -42,9 +69,16 @@
         });
         
     }];
+    
 }
 
 
+
+#pragma mark - SearchBar Delegate
+
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+    NSLog(@"search Text: %@",searchController.searchBar.text);
+}
 
 #pragma mark - Table View Data Source
 
