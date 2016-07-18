@@ -10,7 +10,7 @@
 
 #import "FlickrManager.h"
 
-@interface ViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,UISearchResultsUpdating>
+@interface ViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,UISearchResultsUpdating,UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 

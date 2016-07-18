@@ -25,10 +25,10 @@
 
 #pragma mark - Recent Public Photos
 
-- (void)getRecentPhotosByPage:(NSInteger)page count:(NSInteger)numberOfPhoto completion:(FMRequestCompletion)completion {
+- (void)getRecentPhotosByPage:(NSInteger)page count:(NSInteger)numberOfPhotos completion:(FMRequestCompletion)completion {
     
     NSDictionary *args = @{
-                           @"per_page" : [NSString stringWithFormat:@"%i",(int)numberOfPhoto],
+                           @"per_page" : [NSString stringWithFormat:@"%i",(int)numberOfPhotos],
                            @"page" : [NSString stringWithFormat:@"%i",(int)page],
                            @"extras" : @"date_upload,owner_name,views,url_l"
                            };
@@ -40,8 +40,24 @@
         completion(photos,error);
         
     }];
+}
+
+
+- (void)getPhotosWithSearchQuery:(NSString*)query page:(NSInteger)page count:(NSInteger)numberOfPhotos completion:(FMRequestCompletion)completion {
     
+    NSDictionary *args = @{
+                           @"per_page" : [NSString stringWithFormat:@"%i",(int)numberOfPhotos],
+                           @"page" : [NSString stringWithFormat:@"%i",(int)page],
+                           @"extras" : @"date_upload,owner_name,views,url_l",
+                           @"text" : query
+                           };
     
+    [[FlickrKit sharedFlickrKit] call:@"flickr.photos.search" args:args completion:^(NSDictionary *response, NSError *error) {
+        
+        FKPhotos *photos = [[FKPhotos alloc] initWithDictionary:[response objectForKey:@"photos"] error:nil];
+        
+        completion(photos,error);
+    }];
     
 }
 

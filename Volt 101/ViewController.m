@@ -13,8 +13,12 @@
 @interface ViewController ()
 
 @property (nonatomic,strong) FKPhotos *photos;
+@property (nonatomic,strong) FKPhotos *searchPhotos;
+@property (nonatomic,strong) NSString *searchQuery;
 
 @property (nonatomic,strong) UISearchController *searchController;
+
+
 
 @end
 
@@ -33,12 +37,17 @@
     [self getRecentPhotos];
 }
 
+
 #pragma mark - Configuration
 
 - (void)configureSearchController {
+    
+    
+    
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    self.searchController.searchBar.delegate = self;
     self.searchController.searchResultsUpdater = self;
-    self.searchController.dimsBackgroundDuringPresentation = NO;
+    self.searchController.dimsBackgroundDuringPresentation = YES;
     self.definesPresentationContext = YES;
     self.tableView.tableHeaderView = self.searchController.searchBar;
     
@@ -53,32 +62,59 @@
 }
 
 
+
 #pragma mark - SERVICES
 
 - (void)getRecentPhotos {
     
     [[FlickrManager sharedManager] getRecentPhotosByPage:1 count:10 completion:^(FKPhotos *photos, NSError *error) {
         
-        NSLog(@"Download successed!");
         self.photos = photos;
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-            [self.tableView reloadData];
-            
-        });
+        [self updateTableView];
         
     }];
     
 }
 
 
+#pragma mark - SearhBar Delegate
 
-#pragma mark - SearchBar Delegate
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    
+    [self.searchController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    
+    self.searchPhotos = nil;
+    [self updateTableView];
+    
+}
+
+
+
+#pragma mark - SearchBarController Delegate
 
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
-    NSLog(@"search Text: %@",searchController.searchBar.text);
+    
+    NSString *query = searchController.searchBar.text;
+    
+    if ([query isEqualToString:@""]) {
+        
+        self.searchPhotos = nil;
+        [self updateTableView];
+        
+    }
+    
+    [[FlickrManager sharedManager] getPhotosWithSearchQuery:searchController.searchBar.text page:1 count:10 completion:^(FKPhotos *photos, NSError *error) {
+        
+        self.searchPhotos = photos;
+        
+        [self updateTableView];
+    }];
 }
+
+
 
 #pragma mark - Table View Data Source
 
@@ -100,5 +136,27 @@
     return cell;
 }
 
+
+
+#pragma mark - Helpers
+
+- (void)updateTableView {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self.tableView reloadData];
+        
+    });
+    
+}
+
+- (FKPhotos *)photos {
+    
+    if (self.searchPhotos && self.searchPhotos.photo.count > 0) {
+        return self.searchPhotos;
+    }else {
+        return _photos;
+    }
+}
 
 @end

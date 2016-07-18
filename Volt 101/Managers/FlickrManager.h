@@ -23,6 +23,13 @@ typedef void (^FMRequestCompletion)(FKPhotos *photos, NSError *error);
  * @param page Number of current page
  * @param count Number of photos fetching
  */
-- (void)getRecentPhotosByPage:(NSInteger)page count:(NSInteger)numberOfPhoto completion:(FMRequestCompletion)completion;
+- (void)getRecentPhotosByPage:(NSInteger)page count:(NSInteger)numberOfPhotos completion:(FMRequestCompletion)completion;
 
+/*!
+ * @discussion Getting the photos related with search query
+ * @param query Search Text
+ * @param page Number of current page
+ * @param count Number of photos fetching
+ */
+- (void)getPhotosWithSearchQuery:(NSString*)query page:(NSInteger)page count:(NSInteger)numberOfPhotos completion:(FMRequestCompletion)completion;
 @end
