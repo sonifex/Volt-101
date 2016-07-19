@@ -11,6 +11,6 @@ target 'Volt 101' do
     pod 'PureLayout'
     pod 'JSONModel'
     pod 'NSDate+TimeAgo'
-    
+    pod 'IDMPhotoBrowser'
     
 end

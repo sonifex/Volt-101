@@ -14,9 +14,15 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - DACircularProgress (2.3.1)
   - FlickrKit (1.0.8)
+  - IDMPhotoBrowser (1.8.4):
+    - DACircularProgress
+    - pop
+    - SDWebImage
   - JSONModel (1.2.0)
   - NSDate+TimeAgo (1.0.6)
+  - pop (1.0.9)
   - PureLayout (3.0.2)
   - SDWebImage (3.8.1):
     - SDWebImage/Core (= 3.8.1)
@@ -25,6 +31,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - FlickrKit
+  - IDMPhotoBrowser
   - JSONModel
   - NSDate+TimeAgo
   - PureLayout
@@ -32,12 +39,15 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   FlickrKit: beadf880a10ccaa2f13666d04112324fe08815e2
+  IDMPhotoBrowser: b574fe3229754e701f32df271afbc4ac7e4e1997
   JSONModel: 12523685c4b623553ccf844bbbf7007624317b2c
   NSDate+TimeAgo: 35601c619b2d59290055e4fe76e61d97677a2360
+  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
 
-PODFILE CHECKSUM: 76498accccabe53d2e7920017d20eef85757ef45
+PODFILE CHECKSUM: 0514782bb3c95bff73a1341a399b476efce10a94
 
 COCOAPODS: 1.0.1

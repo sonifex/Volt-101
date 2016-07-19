@@ -10,6 +10,8 @@
 
 #import "PhotoCell.h"
 
+#import "IDMPhotoBrowser.h"
+
 @interface ViewController ()
 
 @property (nonatomic,strong) FKPhotos *photos;
@@ -184,6 +186,32 @@
     
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    PhotoCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    NSMutableArray *tmpPhotoArray = [NSMutableArray new];
+    for (FKPhoto *photo in self.photos.photo) {
+        
+        [tmpPhotoArray addObject:photo.photoURL ? photo.photoURL : [NSURL URLWithString:@"http://nacionalexpresso.com.br/wp-content/uploads/2014/11/img-not-found-300x190.jpg"]];
+        
+    }
+    
+    
+    
+    IDMPhotoBrowser *browser = [[IDMPhotoBrowser alloc] initWithPhotoURLs:tmpPhotoArray animatedFromView:selectedCell.imageViewPhoto];
+    [browser setInitialPageIndex:indexPath.row];
+    browser.displayArrowButton = NO;
+    browser.displayActionButton = NO;
+    browser.scaleImage = selectedCell.imageViewPhoto.image;
+    
+    
+    [self.navigationController presentViewController:browser animated:YES completion:nil];
+    
+}
+
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     

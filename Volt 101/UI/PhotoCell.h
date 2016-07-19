@@ -11,6 +11,8 @@
 
 @interface PhotoCell : UITableViewCell
 
+@property (nonatomic,strong) UIImageView *imageViewPhoto;
+
 - (void)setWithPhoto:(FKPhoto*)photo;
 
 @end

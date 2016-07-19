@@ -18,7 +18,7 @@
 @property (nonatomic,strong) UIImageView *imageViewUserAvatar;
 @property (nonatomic,strong) UILabel *labelUserName;
 @property (nonatomic,strong) UILabel *labelDate;
-@property (nonatomic,strong) UIImageView *imageViewPhoto;
+
 
 @property (nonatomic, assign) BOOL didSetupConstraints;
 @property (nonatomic,strong) FKPhoto *photo;
@@ -50,8 +50,9 @@
 }
 
 
+
+
 - (void)setupViews {
-    
     
     [self.contentView addSubview:self.imageViewUserAvatar];
     [self.contentView addSubview:self.labelUserName];
@@ -63,8 +64,8 @@
     
 }
 
-- (void)updateConstraints
-{
+- (void)updateConstraints {
+    
     if (!self.didSetupConstraints) {
         
         
