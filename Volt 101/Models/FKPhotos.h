@@ -17,7 +17,7 @@
 @property (nonatomic,strong)NSString *page;
 @property (nonatomic,strong)NSString *pages;
 @property (nonatomic,strong)NSString *perpage;
-@property (nonatomic,strong)NSArray<FKPhoto> *photo;
+@property (nonatomic,strong)NSMutableArray<FKPhoto> *photo;
 
 
 @end
